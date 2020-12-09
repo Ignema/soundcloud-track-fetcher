@@ -9,8 +9,8 @@
         <link rel="stylesheet" href="css/bootstrap.css">
         <script src="js/bootstrap.bundle.js"></script>
         <script src="js/sdk.js"></script>
-        <script> SC.initialize({client_id: "b8f06bbb8e4e9e201f9e6e46001c3acb"})
-        play = (id) => SC.stream(`/tracks/${id}`, (s) => s.play())
+        <script> SC.initialize({client_id: "b8f06bbb8e4e9e201f9e6e46001c3acb", redirect_uri: '/'})
+        play = (id) => SC.stream(`/tracks/${id}`).then((s) => s.play())
        </script>
        <style>
             body{
