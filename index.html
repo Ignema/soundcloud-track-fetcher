@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>SoundCloud Track Fetcher</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/bootstrap.css">
+        <script src="js/bootstrap.bundle.js"></script>
+        <script src="js/sdk.js"></script>
+        <script> SC.initialize({client_id: "b8f06bbb8e4e9e201f9e6e46001c3acb"})
+        play = (id) => SC.stream(`/tracks/${id}`, (s) => s.play())
+       </script>
+       <style>
+            body{
+                background-color: #212529;
+            }
+           main{
+               color: white;
+               display: flex;
+               justify-content: center;
+               align-items: center;
+               height: 100vh;
+               width: 100vw;
+           }
+           form{
+               margin-top: 10rem;
+               height: 40vh;
+               width: 30vw;
+               display: flex;
+               flex-direction: column;
+               justify-content: space-around;
+               align-items: center;
+           }
+           input{
+               text-align: center;
+           }
+           .btn{
+               width: 20vw;
+           }
+           .alert{
+               display: none;
+           }
+       </style>
+    </head>
+    <body>
+        <div class="alert alert-warning w-40 m-5" role="alert"> Please choose a valid id and try again... </div>
+        <main>
+            <form onsubmit="try {
+                document.getElementsByClassName('alert')[0].style.display = 'none'; 
+                play(document.getElementById('id').value);
+                } catch (error) { 
+                    document.getElementsByClassName('alert')[0].style.display = 'block';
+                }  
+                return false;">
+                <p class="lead">Enter a valid SoundCloud song ID (Exemple: 929484064)</p>
+                <input id="id" class="form-control" type="text">
+                <button class="btn btn-danger" type="submit">Play</button>
+                <a href="img/howto.png" class="lead">How to find a song's track ID on SoundCloud?</a>
+                <p class="lead">Yassir douslimi</p>
+            </form>
+        </main>
+    </body>
+</html>
